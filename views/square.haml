@@ -1,0 +1,9 @@
+- if value.nil?
+  .square{id: id}
+- else
+  .square_ship
+
+    .content
+      .table
+        .table-cell
+          = value unless id.nil?

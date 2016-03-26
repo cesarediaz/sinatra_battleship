@@ -1,0 +1,6 @@
+.col-md-4
+  %h3 Oponent
+  = haml :grid, locals: {board: 'oponent'}
+
+  %h3 Mine
+  = haml :grid, locals: {board: 'mine', ships: settings.ships}

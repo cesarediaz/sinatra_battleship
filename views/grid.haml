@@ -1,0 +1,21 @@
+- header = ['\-/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+- rows = ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+%span{id: board}
+  - rows.each do |row|
+    - cols = 0
+    - if row == ''
+      - header.each do |head|
+        = haml :square, locals: {id: head, value: head}
+    - else
+      - (0..10).each do |column|
+        - exist = [false, nil]
+        - if cols == 0
+          = haml :square, locals: {id: row, value: row}
+          - cols += 1
+        - else
+          - settings.ships.each {|ship| exist = [true, ship[0]] if ship.include? "#{row}:#{column}"}
+          - if exist[0] && board != 'oponent'
+            = haml :square, locals: {id: "#{row}:#{column}", value: "#{exist[1]}", board: board}
+          - else
+            = haml :square, locals: {id: "#{row}:#{column}", value: nil, board: board}
