@@ -17,6 +17,14 @@ $( document ).ready(function() {
           url: '/shot',
           data: {id: id},
           success: function(data) {
+            var coords = data['shot_coordinates'];
+            var ship_data = $('.mine').find(jq(coords)).attr('data')
+            $('.mine').find(jq(coords)).attr('style', 'background-color: blue');
+
+            if (ship_data != undefined) {
+              console.log('Barco undido');
+            }
+
             if (data['result'] === 'winner') {
               alert('You are the winner!!!');
             }
@@ -31,3 +39,7 @@ $( document ).ready(function() {
 
     })
 });
+
+function jq(id) {
+  return "#" + id.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+}

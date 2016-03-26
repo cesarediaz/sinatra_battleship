@@ -7,7 +7,6 @@ end
 
 post '/shot' do
   content_type :json
-
   battle = Battle.new
 
   # Shot from human
@@ -20,9 +19,5 @@ post '/shot' do
   battle.strike(settings.ships, shot_coordinates)
   puts "Human ships: #{settings.ships.size}\n"
 
-  if settings.system_ships.empty?
-    { :status => 'success', :result => 'winner' }.to_json
-  elsif settings.ships.empty?
-    { :status => 'success', :result => 'loser' }.to_json
-  end
+  battle.result(settings, shot_coordinates)
 end

@@ -10,8 +10,18 @@ class Battle
     return hit, ship
   end
 
-  def strike(ships, shot_coordinates = "")
+  def strike(ships, shot_coordinates = '')
     hit, ship = shot(ships, shot_coordinates, ship)
     ships.delete_if { |x| x.include?(ship) } if hit
+  end
+
+  def result(settings, shot_coordinates)
+    result = ''
+    if settings.system_ships.empty?
+      result = 'winner'
+    elsif settings.ships.empty?
+      result = 'loser'
+    end
+    { :status => 'success', :result => result, :shot_coordinates => shot_coordinates }.to_json
   end
 end
