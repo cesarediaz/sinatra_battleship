@@ -18,11 +18,12 @@ $( document ).ready(function() {
           data: {id: id},
           success: function(data) {
             var coords = data['shot_coordinates'];
-            var ship_data = $('.mine').find(jq(coords)).attr('data')
+            var ship_data = $('.mine').find(jq(coords)).attr('class').match(/\d+/);
             $('.mine').find(jq(coords)).attr('style', 'background-color: blue');
 
-            if (ship_data != undefined) {
-              console.log('Barco undido');
+            if (ship_data != null) {
+              var klass = '.' + ship_data[0];
+              $('.mine').find(klass).attr('style', 'background-color: gray; color: gray;');
             }
 
             if (data['result'] === 'winner') {
