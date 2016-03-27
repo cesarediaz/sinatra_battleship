@@ -1,7 +1,18 @@
 class Grid
+  @header = ['\-/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+  @rows = ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
   def initialize
     @grid = initial_grid
     @ships = [(1..6), (1..4), (1..4), (1..3), (1..3), (1..3), (1..2), (1..2), (1..2)]
+  end
+
+  def self.header
+    @header
+  end
+
+  def self.rows
+    @rows
   end
 
   def initial_grid

@@ -20,18 +20,8 @@ $( document ).ready(function() {
             var coords = data['shot_coordinates'];
             var ship_data = $('.mine').find(jq(coords)).attr('class').match(/\d+/);
             $('.mine').find(jq(coords)).attr('style', 'background-color: blue');
-
-            if (ship_data != null) {
-              var klass = '.' + ship_data[0];
-              $('.mine').find(klass).attr('style', 'background-color: gray; color: gray;');
-            }
-
-            if (data['result'] === 'winner') {
-              alert('You are the winner!!!');
-            }
-            if (data['result'] === 'loser') {
-              alert('You are the loser!!!');
-            }
+            destroy_ship(ship_data);
+            message(data);
           },
           dataType: 'json'
         });
@@ -43,4 +33,20 @@ $( document ).ready(function() {
 
 function jq(id) {
   return "#" + id.replace( /(:|\.|\[|\]|,)/g, "\\$1" );
+}
+
+function destroy_ship(ship_data) {
+  if (ship_data != null) {
+    var klass = '.' + ship_data[0];
+    $('.mine').find(klass).attr('style', 'background-color: gray; color: gray;');
+  }
+}
+
+function message(data) {
+  if (data['result'] === 'winner') {
+    $('#result').html('You are the winner!!!');
+  }
+  if (data['result'] === 'loser') {
+    $('#result').html('You are the loser!!!');
+  }
 }

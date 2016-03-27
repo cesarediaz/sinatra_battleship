@@ -1,11 +1,8 @@
-- header = ['\-/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-- rows = ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
 %span{id: board}
-  - rows.each do |row|
+  - Grid.rows.each do |row|
     - cols = 0
     - if row == ''
-      - header.each do |head|
+      - Grid.header.each do |head|
         = haml :square, locals: {id: head, value: head}
     - else
       - (0..10).each do |column|
