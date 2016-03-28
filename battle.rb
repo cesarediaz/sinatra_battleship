@@ -1,3 +1,4 @@
+# Battle class represent all actions in battleship game
 class Battle
   def shot(ships, shot_coordinates, ship)
     hit = false
@@ -22,6 +23,6 @@ class Battle
     elsif settings.ships.empty?
       result = 'loser'
     end
-    { :status => 'success', :result => result, :shot_coordinates => shot_coordinates }.to_json
+    { status: 'success', result: result, shot_coordinates: shot_coordinates }.to_json
   end
 end
