@@ -2,6 +2,14 @@
 class Grid
   @header = ['\-/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
   @rows = ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  @ship_colors = { '1' => '#363377',
+                   '2' => '#265723',
+                   '3' => '#6C5E2C',
+                   '4' => '#B44C00',
+                   '5' => '#901252',
+                   '6' => '#743F6C',
+                   '7' => '#7C7211'
+                  }
 
   def initialize
     @grid = initial_grid
@@ -17,7 +25,7 @@ class Grid
   end
 
   class << self
-    attr_reader :header, :rows
+    attr_reader :header, :rows, :ship_colors
   end
 
   def initial_grid
