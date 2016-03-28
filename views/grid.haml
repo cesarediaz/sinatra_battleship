@@ -12,7 +12,7 @@
           - cols += 1
         - else
           - settings.ships.each {|ship| exist = [true, ship[0]] if ship.include? "#{row}:#{column}"}
-          - if exist[0] && board != 'oponent'
+          - if exist[0] && board != 'opponent'
             = haml :square, locals: {id: "#{row}:#{column}", value: "#{exist[1]}", board: board}
           - else
             = haml :square, locals: {id: "#{row}:#{column}", value: nil, board: board}

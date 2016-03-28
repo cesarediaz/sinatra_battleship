@@ -6,7 +6,7 @@ $( document ).ready(function() {
       })
     });
 
-    $('.square').on('click', function(){
+    $('#opponent').find('.square').on('click', function(){
       var id = this.id;
 
       if (id != '') {
