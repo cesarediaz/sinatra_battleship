@@ -20,6 +20,17 @@
     color: #fff;
 }
 
+.square_border {
+    float:left;
+    position: relative;
+    width: 7%;
+    padding-bottom : 7%; /* = width for a 1:1 aspect ratio */
+    margin:1%;
+    background-color:orange;
+    overflow:hidden;
+    color: #fff;
+}
+
 .content {
     position:absolute;
     height:90%; /* = 100% - 2*5% padding */
