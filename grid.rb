@@ -1,6 +1,6 @@
 # Grid class generate initial positions for ships in map game
 class Grid
-  @header = ['\-/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+  @header = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
   @rows = ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   @ship_colors = { '1' => '#363377',
                    '2' => '#265723',
