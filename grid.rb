@@ -1,37 +1,36 @@
+# Grid class generate initial positions for ships in map game
 class Grid
   @header = ['\-/', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
   @rows = ['', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   def initialize
     @grid = initial_grid
-    @ships = [(1..6), (1..4), (1..4), (1..3), (1..3), (1..3), (1..2), (1..2), (1..2)]
+    @ships = [(1..6),
+              (1..4),
+              (1..4),
+              (1..3),
+              (1..3),
+              (1..3),
+              (1..2),
+              (1..2),
+              (1..2)]
   end
 
-  def self.header
-    @header
-  end
-
-  def self.rows
-    @rows
+  class << self
+    attr_reader :header, :rows
   end
 
   def initial_grid
     grid = []
-    (1..10).each do |row|
-      (1..10).each do |col|
-        grid.push "#{row}:#{col}"
-      end
-    end
+    (1..10).each { |row| (1..10).each { |col| grid.push "#{row}:#{col}" } }
     grid
   end
 
   def print_coords(coords, orientation, position)
     coords = coords.split(':')
-    if orientation == 'v'
-      "#{coords.first}:#{coords.last.to_i + position}"
-    else
-      "#{coords.first.to_i + position}:#{coords.last}"
-    end
+    row = coords.first
+    column = coords.last
+    orientation == 'v' ? "#{row}:#{column.to_i + position}" : "#{row.to_i + position}:#{column}"
   end
 
   def available_grid?(ship, coords, orientation)
@@ -68,21 +67,25 @@ class Grid
     return battle_positions, @grid
   end
 
+  def position(ship, orientation)
+    valid = false
+    begin
+      coords = ship_range(ship, orientation)
+      valid = available_grid?(ship, coords, orientation)
+    end until valid
+    coords
+  end
+
   def ships_positions
     ship_positions = []
     ship_counter = 1
     @ships.each do |ship|
-      battle_positions = []
+      battle_position = []
       orientation = [true, false].sample ? 'v' : 'h'
-      valid = false
-
-      begin
-        coords = ship_range(ship, orientation)
-        valid = available_grid?(ship, coords, orientation)
-      end until valid
-      battle_positions, @grid = load(battle_positions, ship, coords, orientation, ship_counter)
+      coords = position(ship, orientation)
+      battle_position, @grid = load(battle_position, ship, coords, orientation, ship_counter)
       ship_counter += 1
-      ship_positions += battle_positions
+      ship_positions += battle_position
     end
     ship_positions
   end
