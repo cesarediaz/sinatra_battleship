@@ -44,9 +44,25 @@ function destroy_ship(ship_data) {
 
 function message(data) {
   if (data['result'] === 'winner') {
-    $('#result').html('You are the winner!!!');
+    modal(BootstrapDialog.TYPE_SUCCESS, 'winner');
   }
   if (data['result'] === 'loser') {
-    $('#result').html('You are the loser!!!');
+    modal(BootstrapDialog.TYPE_DANGER, 'loser');
   }
+}
+
+
+function modal(type, result){
+  BootstrapDialog.show({
+    type: type,
+    title: 'Result: ',
+    message: 'You are the ' + result + '!!!',
+    buttons: [{
+              label: 'OK',
+              action: function(dialogRef){
+                  dialogRef.close();
+                  location.reload();
+              }
+          }]
+  });
 }

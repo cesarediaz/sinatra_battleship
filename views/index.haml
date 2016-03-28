@@ -1,9 +1,10 @@
-#result
 .col-md-4
   %div.opponent
-    %h3 Opponent
+    %h5 Opponent
     = haml :grid, locals: {board: 'opponent'}
 
   %div.mine
-    %h3 Mine
+    %h5 Mine
     = haml :grid, locals: {board: 'mine', ships: settings.ships}
+
+= haml :message
