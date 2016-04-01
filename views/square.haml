@@ -1,9 +1,9 @@
 - if value.nil?
   .square{id: id}
 - elsif !value.nil? && !Grid.rows.include?(value) && !Grid.header.include?(value)
-  .square_ship{id: id, class: value[1], style: "background-color: #{Grid.ship_colors[value[1]]};"}
+  .square.square_ship{id: id, class: value[1], style: "background-color: #{Grid.ship_colors[value[1]]};"}
 - elsif !value.nil? && (Grid.rows.include?(value) || Grid.header.include?(value))
-  .square_border{id: id}
+  .square.square_border{id: id}
 
     .content
       .table

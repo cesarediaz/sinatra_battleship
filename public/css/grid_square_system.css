@@ -8,35 +8,17 @@
     overflow:hidden;
     color: #fff;
 }
-
-.square_ship {
-    float:left;
-    position: relative;
-    width: 7%;
-    padding-bottom : 7%; /* = width for a 1:1 aspect ratio */
-    margin:1%;
+.square.square_ship {
     background-color:#000;
-    overflow:hidden;
-    color: #fff;
 }
-
-.square_border {
-    float:left;
-    position: relative;
-    width: 7%;
-    padding-bottom : 7%; /* = width for a 1:1 aspect ratio */
-    margin:1%;
+.square.square_border {
     background-color: #0F073B;
-    overflow:hidden;
-    color: #fff;
 }
-
 .content {
     position:absolute;
     height:90%; /* = 100% - 2*5% padding */
     width:90%; /* = 100% - 2*5% padding */
     padding: 5%;
-
 }
 .table{
     display:table;
@@ -47,8 +29,6 @@
     display:table-cell;
     vertical-align:middle;
 }
-
-
 /*  following just for the demo */
 body {
     margin-top: 1px;
