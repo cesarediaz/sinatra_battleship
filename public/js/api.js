@@ -1,3 +1,4 @@
+var pleaseWait = $('#pleaseWaitDialog');
 var Battleship = function (){};
 
 Battleship.prototype.jq = function(id) {
@@ -40,3 +41,12 @@ Battleship.prototype.autoclose_modal = function(time = 5000) {
     $('.modal').modal('hide');
   }, time);
 };
+
+Battleship.prototype.showPleaseWait = function() {
+  pleaseWait.modal('show');
+};
+
+Battleship.prototype.hidePleaseWait = function () {
+  pleaseWait.modal('hide');
+};
+

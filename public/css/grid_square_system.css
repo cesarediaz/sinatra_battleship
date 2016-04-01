@@ -37,3 +37,8 @@ body {
     text-align:center;
     background:#ECECEC;
 }
+
+#pleaseWaitDialog {
+    width: 100%;
+    height: 250px;
+}
